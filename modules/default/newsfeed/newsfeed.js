@@ -99,7 +99,6 @@ Module.register("newsfeed",{
 		}
 
 		if (this.newsItems.length > 0) {
-
 			// this.config.showFullArticle is a run-time configuration, triggered by optional notifications
 			if (!this.config.showFullArticle && (this.config.showSourceTitle || this.config.showPublishDate)) {
 				var sourceAndTimestamp = document.createElement("div");
@@ -124,7 +123,6 @@ Module.register("newsfeed",{
 			//Remove selected tags from the beginning of rss feed items (title or description)
 
 			if (this.config.removeStartTags === "title" || this.config.removeStartTags === "both") {
-
 				for (f=0; f<this.config.startTags.length;f++) {
 					if (this.newsItems[this.activeItem].title.slice(0,this.config.startTags[f].length) === this.config.startTags[f]) {
 						this.newsItems[this.activeItem].title = this.newsItems[this.activeItem].title.slice(this.config.startTags[f].length,this.newsItems[this.activeItem].title.length);
@@ -134,7 +132,6 @@ Module.register("newsfeed",{
 			}
 
 			if (this.config.removeStartTags === "description" || this.config.removeStartTags === "both") {
-
 				if (this.isShowingDescription) {
 					for (f=0; f<this.config.startTags.length;f++) {
 						if (this.newsItems[this.activeItem].description.slice(0,this.config.startTags[f].length) === this.config.startTags[f]) {
@@ -167,7 +164,7 @@ Module.register("newsfeed",{
 			if(!this.config.showFullArticle){
 				var title = document.createElement("div");
 				title.className = "bright medium light" + (!this.config.wrapTitle ? " no-wrap" : "");
-				title.innerHTML = this.newsItems[this.activeItem].title;
+				title.innerHTML = "<a href="+this.newsItems[this.activeItem].url +">"+this.newsItems[this.activeItem].title+"</a>";
 				wrapper.appendChild(title);
 			}
 
